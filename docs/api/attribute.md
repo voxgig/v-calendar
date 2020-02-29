@@ -17,7 +17,7 @@ This page is currently being updated.
 
 **Default:** `index`
 
-### `highlight`
+<!-- ### `highlight`
 
 **Type:** Object, Function
 
@@ -105,71 +105,29 @@ This page is currently being updated.
 **Default:** 
 -->
 
-## Highlight Object
+## Highlight
 
-### `animated`
+**Description:** Highlight to associate with the attribute
 
 **Type:** Boolean
 
-**Description:** Highlight is animated on appearing, disappearing or range change.
-
-**Default:** `true`
-
-### `height`
+When `true` the current theme color is used
 
 **Type:** String
 
-**Description:** Height of highlighted region.
+Uses theme with the provided name
 
-**Default:** `"1.8rem"`
+**Type:** Object
 
-### `backgroundColor`
-
-**Type:** String
-
-**Description:** Background color of highlighted region.
-
-**Default:** `"rgba(0, 0, 0, 0.5)"`
-
-### `borderColor`
-
-**Type:** String
-
-**Description:** Border color of highlighted region.
+Set of options to configure the highlight
 
 **Default:** `undefined`
 
-### `borderWidth`
+### `highlight.color`
+
+**Description:** Uses theme with the provided name
 
 **Type:** String
-
-**Description:** Border width of highlighted region.
-
-**Default:** `"0"`
-
-### `borderStyle`
-
-**Type:** String
-
-**Description:** Border style of highlighted region.
-
-**Default:** `"solid"`
-
-### `borderRadius`
-
-**Type:** String
-
-**Description:** Border radius of highlighted region.
-
-**Default:** `"1.8rem"`
-
-### `opacity`
-
-**Type:** Number
-
-**Description:** Opacity of highlighted region.
-
-**Default:** `1`
 
 <!-- 
 ### 
@@ -181,75 +139,7 @@ This page is currently being updated.
 **Default:** 
 -->
 
-## Dot Object
-
-### `diameter`
-
-**Type:** String
-
-**Description:** Diameter of dot.
-
-**Default:** `"5px"`
-
-### `backgroundColor`
-
-**Type:** String
-
-**Description:** Background color of dot.
-
-**Default:** `"rgba(0, 0, 0, 0.5)"`
-
-### `borderColor`
-
-**Type:** String
-
-**Description:** Border color of dot.
-
-**Default:** `undefined`
-
-### `borderWidth`
-
-**Type:** String
-
-**Description:** Border width of dot.
-
-**Default:** `0`
-
-### `borderStyle`
-
-**Type:** String
-
-**Description:** Border style of dot.
-
-**Default:** `"solid"`
-
-### `borderRadius`
-
-**Type:** String
-
-**Description:** Border radius of dot.
-
-**Default:** `"50%"`
-
-### `opacity`
-
-**Type:** Number
-
-**Description:** Opacity of dot.
-
-**Default:** `1`
-
-<!-- 
-### 
-
-**Type:** 
-
-**Description:** 
-
-**Default:** 
--->
-
-## Bar Object
+<!-- ## Bar Object
 
 ### `height`
 
@@ -297,7 +187,7 @@ This page is currently being updated.
 
 **Description:** Opacity of bar.
 
-**Default:** `1`
+**Default:** `1` -->
 
 <!-- 
 ### 
@@ -309,55 +199,101 @@ This page is currently being updated.
 **Default:** 
 -->
 
-## Popover Object
+## Popover
 
-### `label`
+**Type:** Object
 
-**Type:** String, Function
-
-**Description:** Text string to display in the popover content row.
+**Description:** Popover to associate with the attribute
 
 **Default:** `undefined`
 
-### `labelStyle`
+### `popover.label`
 
-**Type:** Object, Function
+**Description:** Text string content to display in the popover.
 
-**Description:** Style to apply for label.
+**Type:** String
 
 **Default:** `undefined`
 
-### `hideIndicator`
+### `popover.labelClass`
+
+**Description:** Class to apply to the label.
+
+**Type:** String
+
+**Default:** `undefined`
+
+### `popover.labelStyle`
+
+**Description:** Style to apply to the label.
+
+**Type:** Object
+
+**Default:** `undefined`
+
+### `popover.hideIndicator`
+
+**Description:** Hides the indicator that appears to the left of the label.
 
 **Type:** Boolean
 
-**Description:** Hides the indicator symbol on the left side of the popover content row.
+**Default:** `false`
+
+### `popover.isInteractive`
+
+**Description:** Allows user to interactive with the popover contents. For example, this keeps the popover open when user hovers over the popover when `visibility === "hover"`, instead of hiding it by default.
+
+**Type:** Boolean
 
 **Default:** `false`
 
-### `slot`
+### `popover.visibility`
+
+**Description:**  Visibility mode for the popover (`"hover-focus"`, `"hover"`, `"focus"`, `"click"`, `"visible"`, `"hidden"`).
 
 **Type:** String
-
-**Description:** Name of slot to use to display the popover content row.
-
-**Default:** `undefined`
-
-### `visibility`
-
-**Type:** String
-
-**Description:** Visibility of the popover when this label or slot is displayed (`"hover`, `"focus"`, `"visible"`, `"hidden"`).
 
 **Default:** `"hover"`
 
-### `isInteractive`
+### `popover.placement`
+
+**Description:** Default or suggested placement of the popover. This may change as the browser window dimensions change. [Valid placements](https://popper.js.org/docs/v2/constructors/#placement) include `auto`, `top`, `right`, `bottom`, `left`. Each placement can have suffixed variations `-start` or `-end`.
+
+**Type:** String
+
+**Default:** `"bottom"`
+
+### `popover.positionFixed` [Deprecated]
+
+**Description:** Display the popover in `fixed` mode. Reference [`popper.js`](https://popper.js.org/popper-documentation.html#Popper.Defaults.positionFixed) for more details.
 
 **Type:** Boolean
 
-**Description:** Determines if the user can interract with the popover content. Logically 'OR'ed with other popovers on the same day.
-
 **Default:** `false`
+
+::: warning
+This option deprecated in `v1.1.0` in favor of the `strategy` option.
+:::
+
+### `popover.strategy`
+
+**Description:** Describes the positioning strategy to use. By default, it is `absolute`, which in the simplest cases does not require repositioning of the popover. Reference [`popper.js`](https://popper.js.org/docs/v2/constructors/#strategy) for more details
+
+**Type:** String
+
+**Default:** `"absolute"`
+
+::: tip
+This option replaces the deprecated `positionFixed` option as of `v1.1.0`
+:::
+
+### `popover.modifiers`
+
+**Description:** Used to modify the behavior of `popper.js` [`< v1.1.0`](https://popper.js.org/docs/v1/#modifiers) [`>= v1.1.0`](https://popper.js.org/docs/v2/modifiers/).
+
+**Type:** Object `< v1.1.0`, Array `>= v1.1.0`
+
+**Default:** `undefined`
 
 <!-- 
 ### 
@@ -368,14 +304,3 @@ This page is currently being updated.
 
 **Default:** 
 -->
-
-## Content Style Object
-
-Content style is just a style object. All normal style properties apply.
-
-
-## Content Hover Style (Deprecated)
-
-::: warning
-As of *v0.8.0*, the `contentHoverStyle` property has been deprecated in favor of using a function to define the `contentStyle` property. This functions accepts an object parameter with the following properties (`isHovered`, `isFocused`, [`day`](./day-object.md)). This function should return the configured style.
-:::
