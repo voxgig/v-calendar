@@ -40,7 +40,6 @@ export default {
                       id: this.navPopoverId,
                       visibility: this.navVisibility_,
                       placement: this.navPlacement,
-                      modifiers: { flip: { behavior: ['bottom'] } },
                       isInteractive: true,
                     },
                   },

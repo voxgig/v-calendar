@@ -1,5 +1,6 @@
 <script>
-import Popper from 'popper.js';
+import { createPopper } from '@popperjs/core/lib/popper-lite';
+import flip from '@popperjs/core/lib/modifiers/flip';
 import { popoversMixin } from '@/utils/popovers';
 import { on, off, elementContains } from '@/utils/helpers';
 import { addTapOrClickHandler } from '@/utils/touch';
@@ -74,8 +75,8 @@ export default {
       args: null,
       visibility: '',
       placement: 'bottom',
-      positionFixed: false,
-      modifiers: {},
+      strategy: 'absolute',
+      modifiers: [],
       isInteractive: false,
       delay: 10,
       popperEl: null,
@@ -89,7 +90,7 @@ export default {
             direction: this.direction,
             alignment: this.alignment,
             args: this.args,
-            updateLayout: this.scheduleUpdate,
+            updateLayout: this.update,
             hide: opts => this.hide(opts),
           })) ||
         this.$slots.default
@@ -98,14 +99,19 @@ export default {
     popperOptions() {
       return {
         placement: this.placement,
-        positionFixed: this.positionFixed,
-        modifiers: {
-          hide: { enabled: false },
-          preventOverflow: { enabled: false },
-          ...this.modifiers,
-        },
-        onCreate: this.onPopperUpdate,
-        onUpdate: this.onPopperUpdate,
+        strategy: this.strategy,
+        modifiers: [
+          flip,
+          {
+            name: 'popoverUpdate',
+            enabled: true,
+            phase: 'afterWrite',
+            fn: ({ state }) => {
+              this.onPopperUpdate(state);
+            },
+          },
+          ...(this.modifiers || []),
+        ],
       };
     },
     isVisible() {
@@ -144,7 +150,7 @@ export default {
           this.args = val.args;
           this.visibility = val.visibility;
           this.placement = val.placement;
-          this.positionFixed = val.positionFixed;
+          this.strategy = val.strategy;
           this.modifiers = val.modifiers;
           this.isInteractive = val.isInteractive;
           this.setupPopper();
@@ -250,22 +256,22 @@ export default {
           this.popper = null;
         }
         if (!this.popper) {
-          this.popper = new Popper(
+          this.popper = createPopper(
             this.ref,
             this.popoverEl,
             this.popperOptions,
           );
         } else {
-          this.popper.scheduleUpdate();
+          this.popper.update();
         }
       });
     },
-    onPopperUpdate(data) {
-      this.placement = data.placement;
+    onPopperUpdate({ placement }) {
+      this.placement = placement;
     },
-    scheduleUpdate() {
+    update() {
       if (this.popper) {
-        this.popper.scheduleUpdate();
+        this.popper.update();
       }
     },
     beforeEnter(e) {

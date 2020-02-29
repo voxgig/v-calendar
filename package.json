@@ -46,9 +46,9 @@
     "deploy:docs": "vuepress build docs && netlify deploy"
   },
   "dependencies": {
+    "@popperjs/core": "^2.0.6",
     "date-fns": "^2.6.0",
-    "lodash": "^4.17.11",
-    "popper.js": "^1.14.7"
+    "lodash": "^4.17.11"
   },
   "devDependencies": {
     "@babel/plugin-transform-arrow-functions": "^7.2.0",
