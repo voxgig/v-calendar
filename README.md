@@ -13,6 +13,9 @@
     <a href="https://github.com/nathanreyes/v-calendar/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/v-calendar.svg" alt="License"></a>
 </p>
 
+
+NOTE: This fork contains Voxgig-specific customizations
+
 ------
 
 ```bash

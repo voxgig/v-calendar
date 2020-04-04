@@ -800,7 +800,6 @@ export default {
   justify-content: space-between;
   padding: var(--arrows-padding);
   pointer-events: none;
-  z-index: 10;
   &.title-left {
     justify-content: flex-end;
   }

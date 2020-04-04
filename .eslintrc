@@ -21,6 +21,7 @@
     "max-len": "off",
     "no-plusplus": "off",
     "linebreak-style": "off",
+    "import/order": "off",
     "import/no-duplicates": "off",
     "import/no-webpack-loader-syntax": "off",
     "import/first": "off",
