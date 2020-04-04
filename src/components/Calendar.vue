@@ -214,7 +214,7 @@ export default {
                       props: {
                         rows: this.rows,
                         columns: this.columns,
-                        columnWidth: 'minmax(256px, 1fr)',
+                        columnWidth: 'minmax(var(--month-content-width), 1fr)',
                         disableFocus: true,
                       },
                       attrs: {
@@ -761,6 +761,8 @@ export default {
   --weeks-padding: 5px 6px 7px 6px;
 
   --nav-container-width: 170px;
+
+  --month-content-width: 128px;
 
   --day-min-height: 28px;
   --day-content-width: 28px;
