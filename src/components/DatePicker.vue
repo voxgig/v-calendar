@@ -316,6 +316,7 @@ export default {
       this.$emit('daykeydown', day);
     },
     inputInput(e) {
+      console.log('DP inputInput', e);
       this.inputValue = e.target.value;
       if (this.updateOnInput_) {
         this.updateValue(this.inputValue, {

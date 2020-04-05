@@ -590,6 +590,7 @@ export default {
       return page;
     },
     buildPage({ month, year }, ignoreCache) {
+      const self = this;
       const key = `${year.toString()}-${month.toString()}`;
       let page = this.pages.find(p => p.key === key);
       if (!page || ignoreCache) {
@@ -615,6 +616,7 @@ export default {
           movePrevMonth: () => this.move(prevMonthComps),
           moveNextMonth: () => this.move(nextMonthComps),
           refresh: true,
+          clear: () => { console.log('clear'); self.$emit('input', null); }
         };
         // Assign day info
         page.days = this.$locale.getCalendarDays(page);

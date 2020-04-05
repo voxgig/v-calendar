@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0" />
     <link rel="icon" href="./docs/.vuepress/public/favicon.png" />
     <title>Calendar Test</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script-->
+    <script src="./node_modules/vue/dist/vue.js"></script>
     <script src="./lib/v-calendar.umd.js"></script>
     <style>
       section {
@@ -38,7 +39,8 @@
         <p>This uses the built version of the plugin</p>
       </section>
       <section>
-        <v-calendar />
+        <v-calendar>
+        </v-calendar>
       </section>
       <section>
         <div class="selectors">
@@ -55,8 +57,19 @@
             Range
           </label>
         </div>
-        <v-date-picker :mode="mode" v-model="date" />
+
+        <v-date-picker :mode="mode" v-model="date">
+          <div slot="footer" slot-scope="page" style="text-align:center;">
+            <span @click="page.clear()">clear</span>
+          </div>
+        </v-date-picker>
+            
       </section>
+      <section>
+        <v-calendar>
+        </v-calendar>
+      </section>
+
     </div>
     <!-- built files will be auto injected -->
     <script type="text/javascript">
@@ -67,7 +80,13 @@
           mode: 'single',
           date: new Date()
         }
-      }
+      },
+    on: {
+    foo: (ev) => {
+  console.log(ev)
+}
+    }
+    
     })
     </script>
   </body>

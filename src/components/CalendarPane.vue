@@ -125,13 +125,15 @@ export default {
       ],
     );
 
+    const footer = this.safeScopedSlot('footer', this.page);
+
     return h(
       'div',
       {
         class: 'vc-pane',
         ref: 'pane',
       },
-      [header, weeks],
+      [header, weeks, footer]
     );
   },
   props: {
@@ -174,7 +176,7 @@ export default {
     },
     refresh() {
       this.$refs.days.forEach(d => d.refresh());
-    },
+    }
   },
 };
 </script>

@@ -12,9 +12,10 @@ module.exports = {
     }),
     tailwindcss('./tailwind.config.js'),
     require('autoprefixer'),
+/*
     process.env.NODE_ENV === 'production'
       ? purgecss({
-          content: ['./src/**/*.vue', './src/**/*.js'],
+          content: ['./src/**'+'/*.vue', './src/**'+'/*.js'],
           extractors: [
             {
               extractor: class {
@@ -28,5 +29,6 @@ module.exports = {
           whitelistPatterns: [/vc-text/, /vc-bg/, /vc-border/, /^vc-rounded/],
         })
       : '',
+*/
   ],
 };
