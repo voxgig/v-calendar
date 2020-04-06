@@ -616,7 +616,7 @@ export default {
           movePrevMonth: () => this.move(prevMonthComps),
           moveNextMonth: () => this.move(nextMonthComps),
           refresh: true,
-          clear: () => { console.log('clear'); self.$emit('input', null); }
+          clear: () => { self.$emit('input', null); }
         };
         // Assign day info
         page.days = this.$locale.getCalendarDays(page);
